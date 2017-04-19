@@ -1,0 +1,47 @@
+
+<!-- Modal Structure -->
+<div id="modalCliente" class="modal modal-fixed-footer">
+	<h4>Clientes</h4>
+	<form class="col s12" th:object="${pessoa}" th:action="@{/clientes}"
+		method="post">
+		<div class="modal-content">
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="icon_prefix" type="text" class="validate"
+						th:field="*{nome}" /> <label>Nome</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" th:field="*{cpf}" /> <label>CPF</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" th:field="*{rg}" /> <label>Rg</label>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<input type="text" class="validate" th:field="*{cep}" /> <label>CEP</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" th:field="*{estado}" /> <label>Estado</label>
+				</div>
+				<div class="input-field col s6">
+					<input type="text" class="validate" th:field="*{endereco}" /> <label>Endereço</label>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="input-field col s3">
+					<input type="text" class="validate" th:field="*{bairro}" /> <label>Bairro</label>
+				</div>
+				<div class="input-field col s3">
+					<input type="text" class="validate" th:field="*{cidade}" /> <label>Cidade</label>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="submit"
+				class="modal-action waves-effect waves-green btn-flat">Salvar</button>
+		</div>
+	</form>
+</div>

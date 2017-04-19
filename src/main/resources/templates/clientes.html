@@ -1,0 +1,63 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+
+	<section layout:fragment="content">
+		<div class="row">
+			<h2 class="header">Clientes</h2>
+			<div class="row">
+				<form class="cols s12" style="margin-left: -56px;">
+					<div class="input-field col s4">
+						<i class="material-icons prefix"></i> <input id="icon_prefix"
+							type="text" placeholder="Qual cliente deseja buscar?" />
+					</div>
+					<div class="col s2" style="margin-top: 20px;">
+						<button type="submit" class="btn waves-effect waves-light">Buscar</button>
+					</div>
+				</form>
+
+				<div class="fixed-action-btn horizontal">
+					<a class="btn-floating btn-large red" data-target="modalCliente">
+						<i class="large material-icons">mode_edit</i>
+					</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<table class="bordered">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>RG</th>
+						<th>Endereço</th>
+						<th>Bairro</th>
+						<th>Cidade</th>
+						<th>Estado</th>
+						<th>CEP</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="pessoa : ${listaPessoas}">
+						<td th:text="${pessoa.nome}"></td>
+						<td th:text="${pessoa.cpf}"></td>
+						<td th:text="${pessoa.rg}"></td>
+						<td th:text="${pessoa.endereco}"></td>
+						<td th:text="${pessoa.bairro}"></td>
+						<td th:text="${pessoa.cidade}"></td>
+						<td th:text="${pessoa.estado}"></td>
+						<td th:text="${pessoa.cep}"></td>
+						<td></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<div th:include="modalClientes"></div>
+	</section>
+
+</div>

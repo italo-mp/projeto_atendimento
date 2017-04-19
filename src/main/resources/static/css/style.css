@@ -1,0 +1,13 @@
+.side-nav.fixed {
+    margin-top: 71px;
+    margin-left: 7px;
+}
+
+.side-nav .userView {
+    position: inherit;
+    margin-bottom: 13px;
+}
+
+.side-nav .userView .background {
+top: -54px;
+}
