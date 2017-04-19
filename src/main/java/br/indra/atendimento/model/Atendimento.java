@@ -48,7 +48,7 @@ public class Atendimento implements Serializable {
 	public Atendimento() {
 	}
 
-	public Atendimento(Pessoa pessoa, Integer idFuncionario, Character statusAtendimento, Character tipoAtendimento) {
+	public Atendimento(Pessoa pessoa, Long idFuncionario, Character statusAtendimento, Character tipoAtendimento) {
 		Funcionario f = new Funcionario();
 		f.setId(idFuncionario);
 		this.funcionario = f;
