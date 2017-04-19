@@ -1,8 +1,9 @@
 function buscarClienteEditar(id) {
+	Materialize.updateTextFields();
 	var url = window.location.pathname.toString();
 	$.ajax({
 		method : 'GET',
-		url : url+'/buscarParaEditar/' + id
+		url : url + '/buscarParaEditar/' + id
 	}).then(function(result) {
 		$('#clienteNome').val(result.nome);
 		$('#clienteId').val(result.id);
@@ -19,6 +20,7 @@ function buscarClienteEditar(id) {
 }
 
 $('#btnCadastroCliente').on('click', function() {
+	Materialize.updateTextFields();
 	document.getElementById("formCliente").reset();
 
 });
