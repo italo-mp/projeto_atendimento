@@ -19,7 +19,7 @@ public class FuncionarioController {
 
 	@Autowired
 	private FuncionarioService funcionarioService;
-
+	
 	@RequestMapping
 	public ModelAndView funcionario() {
 		ModelAndView mv = new ModelAndView("/funcionarios");
