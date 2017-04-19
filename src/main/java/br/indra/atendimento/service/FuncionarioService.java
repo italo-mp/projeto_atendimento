@@ -14,36 +14,36 @@ public class FuncionarioService {
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
 	
-	public Boolean salvarFuncionario(Funcionario funcionario) {
-		
+	public Boolean salvarFuncionario(Funcionario funcionario) {		
 		try{
 			funcionarioRepository.save(funcionario);
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
 			return false;
-		}
-		
+		}		
 	}
 	
-	public Boolean excluirFuncionario(Long id) {
-		
+	public Boolean excluirFuncionario(Long id) {		
 		try {
 			funcionarioRepository.delete(id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		}
-		
+		}		
 	}
 	
 	public List<Funcionario> buscarFuncionarioPorNome(String nome) {
-		return null;
+		return funcionarioRepository.findByNomeContaining(nome);
 	}
 	
 	public List<Funcionario> buscarFuncionarios() {
 		return funcionarioRepository.findAll();
+	}
+	
+	public Funcionario buscarParaEditar(Long id) {
+		return funcionarioRepository.findOne(id);
 	}
 
 }
