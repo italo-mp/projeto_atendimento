@@ -19,8 +19,6 @@ public class Cargo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column
-	private String descricao;
 
 	public Long getId() {
 		return id;
@@ -30,12 +28,5 @@ public class Cargo implements Serializable {
 		this.id = id;
 	}
 
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 
 }
