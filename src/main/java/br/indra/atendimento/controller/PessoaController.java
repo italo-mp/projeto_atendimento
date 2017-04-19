@@ -37,9 +37,9 @@ public class PessoaController {
 	@PostMapping
 	public String salvarClientes(Pessoa pessoa, BindingResult br, RedirectAttributes ra) {
 		if (pessoaService.salvarPessoa(pessoa)) {
-			ra.addFlashAttribute("mensagemSucesso", "Cliente excluído com sucesso!");
+			ra.addFlashAttribute("mensagemSucesso", "Cliente salvo com sucesso!");
 		} else {
-			ra.addFlashAttribute("mensagemErro", "Não foi possível excluir cliente");
+			ra.addFlashAttribute("mensagemErro", "Não foi possível salvar cliente");
 		}
 
 		return "redirect:/clientes";
