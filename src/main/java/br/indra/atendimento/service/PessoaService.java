@@ -42,4 +42,8 @@ public class PessoaService {
 		return pessoaRepository.findAll();
 	}
 
+	public Pessoa buscarParaEditar(Long id) {
+		return pessoaRepository.findOne(id);
+	}
+
 }

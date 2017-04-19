@@ -7,10 +7,17 @@
 		<div class="row">
 			<h2 class="header">Clientes</h2>
 			<div class="row">
-				<form class="cols s12" style="margin-left: -56px;">
+				<div class="card-panel teal lighten-2" th:if="${mensagemSucesso}"
+					th:text="${mensagemSucesso}"></div>
+				<div class="card-panel teal red" th:if="${mensagemErro}"
+					th:text="${mensagemErro}"></div>
+
+				<form class="cols s12" style="margin-left: -56px;"
+					th:action="@{/clientes}" method="get">
 					<div class="input-field col s4">
 						<i class="material-icons prefix"></i> <input id="icon_prefix"
-							type="text" placeholder="Qual cliente deseja buscar?" />
+							name="nomeBusca" type="text"
+							placeholder="Qual cliente deseja buscar?" />
 					</div>
 					<div class="col s2" style="margin-top: 20px;">
 						<button type="submit" class="btn waves-effect waves-light">Buscar</button>
@@ -18,7 +25,7 @@
 				</form>
 
 				<div class="fixed-action-btn horizontal">
-					<a class="btn-floating btn-large red" data-target="modalCliente">
+					<a class="btn-floating btn-large red" data-target="modalCliente" id="btnCadastroCliente">
 						<i class="large material-icons">mode_edit</i>
 					</a>
 				</div>
@@ -31,13 +38,11 @@
 					<tr>
 						<th>Nome</th>
 						<th>CPF</th>
-						<th>RG</th>
 						<th>Endereço</th>
 						<th>Bairro</th>
 						<th>Cidade</th>
-						<th>Estado</th>
-						<th>CEP</th>
-						<th></th>
+
+						<th class="material-icons center-align">settings</th>
 					</tr>
 				</thead>
 
@@ -45,19 +50,22 @@
 					<tr th:each="pessoa : ${listaPessoas}">
 						<td th:text="${pessoa.nome}"></td>
 						<td th:text="${pessoa.cpf}"></td>
-						<td th:text="${pessoa.rg}"></td>
 						<td th:text="${pessoa.endereco}"></td>
 						<td th:text="${pessoa.bairro}"></td>
 						<td th:text="${pessoa.cidade}"></td>
-						<td th:text="${pessoa.estado}"></td>
-						<td th:text="${pessoa.cep}"></td>
-						<td></td>
+
+						<td><a th:href="@{clientes/excluir/{id} (id=${pessoa.id})}"><i
+								class="material-icons">delete</i></a> <a href="#"
+							th:onclick="'javascript:buscarClienteEditar(\''+ ${pessoa.id} +'\')'"><i
+								class="material-icons">mode_edit</i></a></td>
 					</tr>
 
 				</tbody>
 			</table>
 		</div>
 		<div th:include="modalClientes"></div>
+		<script type="text/javascript" th:src="@{/js/clientes.js}"></script>
+
 	</section>
 
 </div>
