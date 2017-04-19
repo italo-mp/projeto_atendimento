@@ -42,4 +42,65 @@ public class Atendimento implements Serializable {
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public long getSenha() {
+		return senha;
+	}
+
+	public void setSenha(long senha) {
+		this.senha = senha;
+	}
+
+	public Character getTipoAtendimento() {
+		return tipoAtendimento;
+	}
+
+	public void setTipoAtendimento(Character tipoAtendimento) {
+		this.tipoAtendimento = tipoAtendimento;
+	}
+
+	public Date getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(Date dataHora) {
+		this.dataHora = dataHora;
+	}
+
+	public Character getStatusAtendimento() {
+		return statusAtendimento;
+	}
+
+	public void setStatusAtendimento(Character statusAtendimento) {
+		this.statusAtendimento = statusAtendimento;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 }
