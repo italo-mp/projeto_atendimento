@@ -17,7 +17,7 @@ public class Funcionario implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 
 	@Column(name = "nome")
 	private String nome;
@@ -38,11 +38,11 @@ public class Funcionario implements Serializable {
 	@JoinColumn(name = "cargo_id")
 	private Cargo cargoId;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
