@@ -1,0 +1,18 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+
+	<section layout:fragment="content">
+		<div class="row">
+			<h2 class="header">Atendimento</h2>
+			<div class="row">
+				<div class="carousel">
+					<div th:each="atendimento : ${listaAtendimentos}">
+				    <div class="carousel-item" href="#one!"><a th:text="${atendimento.senha}"></a><a th:text="${atendimento.tipoAtendimento}"></a></div>
+				    </div>
+  				</div>
+			</div>
+		</div>
+	</section>
+</div>
