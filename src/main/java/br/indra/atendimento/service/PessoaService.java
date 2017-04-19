@@ -35,7 +35,7 @@ public class PessoaService {
 	}
 
 	public List<Pessoa> buscarPessoaPorNome(String nome) {
-		return null;
+		return pessoaRepository.findByNomeContaining(nome);
 	}
 
 	public List<Pessoa> buscarPessoas() {
