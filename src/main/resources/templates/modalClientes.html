@@ -1,48 +1,65 @@
 
 <!-- Modal Structure -->
 <div id="modalCliente" class="modal modal-fixed-footer">
-	<form class="col s12" th:object="${pessoa}" th:action="@{/clientes}"
-		method="post">
-		<div class="modal-content">
+	<div class="modal-content">
+		<form class="col s12" th:object="${pessoa}" th:action="@{/clientes}"
+			id="formCliente" method="post">
 			<h4>Clientes</h4>
 			<div class="row">
-				<input type="hidden" th:field="*{id}" />
+				<input type="hidden" th:field="*{id}" id="clienteId" />
 				<div class="input-field col s6">
-					<input id="icon_prefix" type="text" class="validate"
-						th:field="*{nome}" /> <label>Nome</label>
+					<input id="clienteNome" type="text" class="validate"
+						th:field="*{nome}" placeholder="Nome" /> <label>Nome</label>
 				</div>
 				<div class="input-field col s3">
-					<input type="text" class="validate" th:field="*{cpf}" /> <label>CPF</label>
+					<input type="text" class="validate" placeholder="CPF"
+						th:field="*{cpf}" id="clienteCpf" /> <label>CPF</label>
 				</div>
 				<div class="input-field col s3">
-					<input type="text" class="validate" th:field="*{rg}" /> <label>Rg</label>
+					<input type="text" class="validate" placeholder="RG"
+						th:field="*{rg}" id="clienteRg" /> <label>RG</label>
 				</div>
 
 			</div>
 			<div class="row">
 				<div class="input-field col s3">
-					<input type="text" class="validate" th:field="*{cep}" /> <label>CEP</label>
+					<input type="text" class="validate" placeholder="CEP"
+						th:field="*{cep}" id="clienteCep" /> <label>CEP</label>
 				</div>
 				<div class="input-field col s3">
-					<input type="text" class="validate" th:field="*{estado}" /> <label>Estado</label>
+					<input type="text" class="validate" placeholder="Estado"
+						th:field="*{estado}" id="clienteEstado" /> <label>Estado</label>
 				</div>
 				<div class="input-field col s6">
-					<input type="text" class="validate" th:field="*{endereco}" /> <label>Endereço</label>
+					<input type="text" class="validate" placeholder="Endereço"
+						th:field="*{endereco}" id="clienteEndereco" /> <label>Endereço</label>
 				</div>
 
 			</div>
 			<div class="row">
 				<div class="input-field col s3">
-					<input type="text" class="validate" th:field="*{bairro}" /> <label>Bairro</label>
+					<input type="text" class="validate" placeholder="Bairro"
+						th:field="*{bairro}" id="clienteBairro" /> <label>Bairro</label>
 				</div>
 				<div class="input-field col s3">
-					<input type="text" class="validate" th:field="*{cidade}" /> <label>Cidade</label>
+					<input type="text" class="validate" placeholder="Cidade"
+						th:field="*{cidade}" id="clienteCidade" /> <label>Cidade</label>
+				</div>
+				<div class="col s6">
+					Gerar senha para atendimento?
+					<p>
+						<input type="radio" class="filled-in" name="tipoAtendimento"
+							value="N" id="normal" /> <label for="normal">Atendimento
+							normal!</label> <input type="radio" class="filled-in"
+							name="tipoAtendimento" id="preferencial" value="P" /> <label
+							for="preferencial">Atendimento preferencial!</label>
+					</p>
 				</div>
 			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="submit"
-				class="modal-action waves-effect waves-green btn-flat">Salvar</button>
-		</div>
-	</form>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="submit"
+			class="modal-action waves-effect waves-green btn-flat">Salvar</button>
+	</div>
 </div>

@@ -25,8 +25,8 @@
 				</form>
 
 				<div class="fixed-action-btn horizontal">
-					<a class="btn-floating btn-large red" data-target="modalCliente" id="btnCadastroCliente">
-						<i class="large material-icons">mode_edit</i>
+					<a class="btn-floating btn-large red" data-target="modalCliente"
+						id="btnCadastroCliente"> <i class="large material-icons">mode_edit</i>
 					</a>
 				</div>
 			</div>
@@ -54,10 +54,12 @@
 						<td th:text="${pessoa.bairro}"></td>
 						<td th:text="${pessoa.cidade}"></td>
 
-						<td><a th:href="@{clientes/excluir/{id} (id=${pessoa.id})}"><i
-								class="material-icons">delete</i></a> <a href="#"
+						<td><a class="excluir"
+							th:href="@{clientes/excluir/{id} (id=${pessoa.id})}"><i
+								class="material-icons">delete</i></a> <a class="alterar" href="#"
 							th:onclick="'javascript:buscarClienteEditar(\''+ ${pessoa.id} +'\')'"><i
-								class="material-icons">mode_edit</i></a></td>
+								class="material-icons">mode_edit</i></a> <a><i
+								class="material-icons">note_add</i></a></td>
 					</tr>
 
 				</tbody>

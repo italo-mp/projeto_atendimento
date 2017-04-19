@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,8 +19,9 @@ import javax.persistence.TemporalType;
 public class Atendimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "senha")
@@ -41,6 +44,18 @@ public class Atendimento implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
+
+	public Atendimento() {
+	}
+
+	public Atendimento(Pessoa pessoa, Integer idFuncionario, Character statusAtendimento, Character tipoAtendimento) {
+		Funcionario f = new Funcionario();
+		f.setId(idFuncionario);
+		this.funcionario = f;
+		this.pessoa = pessoa;
+		this.statusAtendimento = statusAtendimento;
+		this.tipoAtendimento = tipoAtendimento;
+	}
 
 	public Long getId() {
 		return id;
@@ -98,9 +113,4 @@ public class Atendimento implements Serializable {
 		this.funcionario = funcionario;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
 }
