@@ -28,7 +28,9 @@ public class AtendimentoService {
 	public Boolean buscarAtendimentos() {
 		try {
 			listaAtendimento = atendimentoRepository.findAll();
-			listaAtendimento.forEach(this::separarListaAtendimento);
+			if (!listaAtendimento.isEmpty() || listaAtendimento != null) {
+				listaAtendimento.forEach(this::separarListaAtendimento);
+			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

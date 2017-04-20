@@ -3,13 +3,14 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="index">
 	<section layout:fragment="content">
-		<div class="col s12">
+		<div class="col s12" th:if="${!#lists.isEmpty(listaAtendimento)}">
 			<div class="carousel col s6">
 
 				<p>
 				<h4 class="fonte-verde">Normal</h4>
 				</p>
-				<div class="card blue-grey darken-1 carousel-item" th:each="normal : ${listaAtendimentoNormal}">
+				<div class="card blue-grey darken-1 carousel-item"
+					th:each="normal : ${listaAtendimentoNormal}">
 					<div class="card-content white-text">
 						<span class="card-title" th:text="${normal.pessoa.nome}"></span>
 						<p>
@@ -26,7 +27,8 @@
 				<p>
 				<h4 class="fonte-verde">Preferencial</h4>
 				</p>
-				<div class="card blue-grey darken-1 carousel-item" th:each="pref : ${listaAtendimentoPreferencial}">
+				<div class="card blue-grey darken-1 carousel-item"
+					th:each="pref : ${listaAtendimentoPreferencial}">
 					<div class="card-content white-text">
 						<span class="card-title" th:text="${pref.pessoa.nome}"></span>
 						<p>
