@@ -37,6 +37,19 @@
 	color: #00e676;
 }
 
+
+
+#login-div{
+	width:100%;
+	text-align: center;
+}
+
+#login-div-inner{
+	width:40%;
+	margin: auto;
+	margin-top: 7%;
+}
+
 /* .carousel .carousel-item {
 	display: none;
 	width: 259px;
@@ -45,3 +58,4 @@
 	top: 0;
 	left: 0;
 } */
+
