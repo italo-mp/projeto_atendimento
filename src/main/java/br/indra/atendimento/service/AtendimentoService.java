@@ -1,14 +1,11 @@
 package br.indra.atendimento.service;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.indra.atendimento.model.Atendimento;
 import br.indra.atendimento.repository.AtendimentoRepository;
 
@@ -60,10 +57,16 @@ public class AtendimentoService {
 
 	public boolean finalizarAtendimento(Character status, Long id) {
 		try {
-			Atendimento atd = new Atendimento();
-			atd.setId(id);
-			atd.setDataHora(new Date());
-			atendimentoRepository.save(atd);
+			atendimentoRepository.finalizarAtendimento(status, new Date(), id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean excluirAtendimento(Long id) {
+		try {
+			atendimentoRepository.delete(id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

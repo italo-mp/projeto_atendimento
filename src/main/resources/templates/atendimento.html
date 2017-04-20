@@ -10,14 +10,19 @@
 				<h4 class="fonte-verde">Normal</h4>
 
 				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title">Card Title</span>
-						<p>I am a very simple card. I am good at containing small bits
-							of information. I am convenient because I require little markup
-							to use effectively.</p>
+					<div class="card-content white-text"
+						th:if="${!#strings.isEmpty(cliente)}">
+						<span class="card-title" th:text="${cliente.pessoa.nome}"></span>
+						<h2 th:text="${cliente.senha}"></h2>
 					</div>
-					<div class="card-action">
-						<a href="#">Finalizar</a><a href="#">Dados do cliente</a>
+					<div class="card-content white-text"
+						th:if="${#strings.isEmpty(cliente)}">
+						<span class="card-title">Não há atendimentos no momento!</span>
+
+					</div>
+					<div class="card-action" th:if="${!#strings.isEmpty(cliente)}">
+						<a th:href="@{/atendimento/finalizar/{id} (id=${cliente.id})}">Finalizar</a><a
+							href="#">Dados do cliente</a>
 					</div>
 				</div>
 
@@ -36,7 +41,7 @@
 								<td th:text="${normal.pessoa.nome}"></td>
 								<td th:text="${normal.senha}"></td>
 								<td><a class="excluir"
-									th:href="@{atendimento/excluir/{id} (id=${normal.id})}"><i
+									th:href="@{/atendimento/excluir/{id} (id=${normal.id})}"><i
 										class="material-icons">delete</i></a></td>
 							</tr>
 						</tbody>
@@ -49,14 +54,22 @@
 				<h4 class="fonte-verde">Preferencial</h4>
 
 				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<span class="card-title">Card Title</span>
-						<p>I am a very simple card. I am good at containing small bits
-							of information. I am convenient because I require little markup
-							to use effectively.</p>
+					<div class="card-content white-text"
+						th:if="${!#strings.isEmpty(clientePreferencial)}">
+						<span class="card-title"
+							th:text="${clientePreferencial.pessoa.nome}"></span>
+						<h2 th:text="${clientePreferencial.senha}"></h2>
 					</div>
-					<div class="card-action">
-						<a href="#">Finalizar</a><a href="#">Dados do cliente</a>
+					<div class="card-content white-text"
+						th:if="${#strings.isEmpty(clientePreferencial)}">
+						<span class="card-title">Não há atendimentos no momento!</span>
+
+					</div>
+					<div class="card-action"
+						th:if="${!#strings.isEmpty(clientePreferencial)}">
+						<a
+							th:href="@{/atendimento/finalizar/{id} (id=${clientePreferencial.id})}">Finalizar</a><a
+							href="#">Dados do cliente</a>
 					</div>
 				</div>
 
@@ -75,7 +88,7 @@
 								<td th:text="${pref.pessoa.nome}"></td>
 								<td th:text="${pref.senha}"></td>
 								<td><a class="excluir"
-									th:href="@{atendimento/excluir/{id} (id=${pref.id})}"><i
+									th:href="@{/atendimento/excluir/{id} (id=${pref.id})}"><i
 										class="material-icons">delete</i></a></td>
 							</tr>
 						</tbody>
