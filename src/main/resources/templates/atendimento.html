@@ -22,7 +22,7 @@
 					</div>
 					<div class="card-action" th:if="${!#strings.isEmpty(cliente)}">
 						<a th:href="@{/atendimento/finalizar/{id} (id=${cliente.id})}">Finalizar</a><a
-							href="#">Dados do cliente</a>
+							th:onclick="'javascript:buscarClienteEditar(\''+ ${cliente.pessoa.id} +'\')'">Dados do cliente</a>
 					</div>
 				</div>
 
@@ -69,7 +69,7 @@
 						th:if="${!#strings.isEmpty(clientePreferencial)}">
 						<a
 							th:href="@{/atendimento/finalizar/{id} (id=${clientePreferencial.id})}">Finalizar</a><a
-							href="#">Dados do cliente</a>
+							th:onclick="'javascript:buscarClienteEditar(\''+ ${clientePreferencial.pessoa.id} +'\')'">Dados do cliente</a>
 					</div>
 				</div>
 
@@ -98,6 +98,7 @@
 
 			</div>
 		</div>
+		<div th:include="modalClientes"></div>
 		<script type="text/javascript" th:src="@{js/atendimento.js}"></script>
 	</section>
 </div>

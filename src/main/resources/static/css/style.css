@@ -1,6 +1,7 @@
 .side-nav.fixed {
 	margin-top: 71px;
 	margin-left: 7px;
+	position: absolute;
 }
 
 .side-nav .userView {

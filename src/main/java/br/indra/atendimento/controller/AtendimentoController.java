@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.indra.atendimento.model.Pessoa;
 import br.indra.atendimento.service.AtendimentoService;
 
 @Controller
@@ -29,6 +30,7 @@ public class AtendimentoController {
 			mv.addObject("clientePreferencial", !atendimentoService.getListaAtendimentoPreferencial().isEmpty()
 					? atendimentoService.getListaAtendimentoPreferencial().get(0) : "");
 		}
+		mv.addObject(new Pessoa());
 		return mv;
 	}
 
@@ -44,7 +46,6 @@ public class AtendimentoController {
 
 	@GetMapping(value = "/finalizar/{id}")
 	public String finalizarAtendimento(@PathVariable(value = "id") Long id, RedirectAttributes ra) {
-		System.out.println("akii");
 		if (atendimentoService.finalizarAtendimento('F', id)) {
 			ra.addFlashAttribute("mensagemSucesso", "Atendimento finalizado com sucesso!");
 		} else {

@@ -3,6 +3,8 @@ package br.indra.atendimento.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +28,12 @@ public class AtendimentoService {
 			listaAtendimentoPreferencial = new ArrayList<>();
 			listaAtendimento = atendimentoRepository.buscarAtendimentosPendentes();
 			if (!listaAtendimento.isEmpty() || listaAtendimento != null) {
-				listaAtendimento.forEach(this::separarListaAtendimento);
+				listaAtendimentoNormal = listaAtendimento.stream().filter(la -> la.getTipoAtendimento() == 'N')
+						.collect(Collectors.toList());
+				listaAtendimentoPreferencial = listaAtendimento.stream().filter(la -> la.getTipoAtendimento() != 'N')
+						.collect(Collectors.toList());
+				// listaAtendimento.forEach(this::separarListaAtendimento);
+				// listaAtendimento.forEach(a -> separarListaAtendimento(a));
 			}
 			return true;
 		} catch (Exception e) {
