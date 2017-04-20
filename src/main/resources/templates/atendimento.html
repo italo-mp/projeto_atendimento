@@ -4,46 +4,87 @@
 	layout:decorator="index">
 	<section layout:fragment="content">
 		<h2 class="header">Atendimento</h2>
-		
+		<div th:include="mensagem"></div>
 		<div class="col s12">
-			<div class="carousel col s6">
-				<p>
+			<div class="col s6">
 				<h4 class="fonte-verde">Normal</h4>
-				</p>
-				<div class="card blue-grey darken-1 carousel-item"
-					th:each="normal : ${listaAtendimentoNormal}">
+
+				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
-						<span class="card-title" th:text="${normal.pessoa.nome}"></span>
-						<p>
-						<h3 th:text="${normal.senha}"></h3>
-						</p>
+						<span class="card-title">Card Title</span>
+						<p>I am a very simple card. I am good at containing small bits
+							of information. I am convenient because I require little markup
+							to use effectively.</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Finalizar</a>
+						<a href="#">Finalizar</a><a href="#">Dados do cliente</a>
 					</div>
 				</div>
-				
-			</div>
 
-			<div class="carousel col s6">
-				<p>
+				<div class="row">
+					<table class="bordered">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Senha</th>
+								<th class="material-icons center-align">settings</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="normal : ${listaAtendimentoNormal}">
+								<td th:text="${normal.pessoa.nome}"></td>
+								<td th:text="${normal.senha}"></td>
+								<td><a class="excluir"
+									th:href="@{atendimento/excluir/{id} (id=${normal.id})}"><i
+										class="material-icons">delete</i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+			</div>
+			<div class="col s6">
 				<h4 class="fonte-verde">Preferencial</h4>
-				</p>
-				<div class="card blue-grey darken-1 carousel-item"
-					th:each="pref : ${listaAtendimentoPreferencial}">
+
+				<div class="card blue-grey darken-1">
 					<div class="card-content white-text">
-						<span class="card-title" th:text="${pref.pessoa.nome}"></span>
-						<p>
-						<h3 th:text="${pref.senha}"></h3>
-						</p>
+						<span class="card-title">Card Title</span>
+						<p>I am a very simple card. I am good at containing small bits
+							of information. I am convenient because I require little markup
+							to use effectively.</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Finalizar</a>
+						<a href="#">Finalizar</a><a href="#">Dados do cliente</a>
 					</div>
+				</div>
+
+				<div class="row">
+					<table class="bordered">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Senha</th>
+								<th class="material-icons center-align">settings</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="pref : ${listaAtendimentoPreferencial}">
+								<td th:text="${pref.pessoa.nome}"></td>
+								<td th:text="${pref.senha}"></td>
+								<td><a class="excluir"
+									th:href="@{atendimento/excluir/{id} (id=${pref.id})}"><i
+										class="material-icons">delete</i></a></td>
+							</tr>
+						</tbody>
+					</table>
+
 				</div>
 
 			</div>
 		</div>
-
+		<script type="text/javascript" th:src="@{js/atendimento.js}"></script>
 	</section>
 </div>
