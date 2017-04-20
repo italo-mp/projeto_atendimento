@@ -9,4 +9,6 @@ import br.indra.atendimento.model.Funcionario;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 
 	List<Funcionario> findByNomeContaining(String nome);
+	Funcionario findByNome(String nome);
+	
 }

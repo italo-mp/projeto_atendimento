@@ -1,0 +1,26 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="index">
+	<section layout:fragment="content">
+		<h2 class="header">Relatórios</h2>
+		<div class="row">
+			<form class="cols s12" style="margin-left: -56px;"
+				th:action="@{/relatorios}" method="get">
+				<div class="input-field col s4">
+					<i class="material-icons prefix"></i> <input id="icon_prefix"
+						name="nomeBusca" type="text"
+						placeholder="Digite o Mês e o Ano  mm/aaaa" />
+				</div>
+				<div class="col s2" style="margin-top: 20px;">
+					<button type="submit" class="btn waves-effect waves-light">Buscar</button>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div id="chartContainer" style="height: 300px; width: 95%;"></div>
+		</div>
+		<script type="text/javascript" th:src="@{js/jquery.canvasjs.min.js}"></script>
+		<script type="text/javascript" th:src="@{js/relatorios.js}"></script>
+	</section>
+</div>

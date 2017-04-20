@@ -50,6 +50,10 @@ public class FuncionarioService {
 	public Funcionario buscarParaEditar(Long id) {
 		return funcionarioRepository.findOne(id);
 	}
+	
+	public Funcionario buscarPorNome(String nome) {
+		return funcionarioRepository.findByNome(nome);
+	}
 
 	public List<Cargo> buscarCargos() {
 		return cargoRepository.findAll();
