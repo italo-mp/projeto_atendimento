@@ -18,15 +18,11 @@ public class AtendimentoService {
 	private List<Atendimento> listaAtendimentoNormal;
 	private List<Atendimento> listaAtendimentoPreferencial;
 
-	public AtendimentoService() {
-		listaAtendimento = new ArrayList<>();
-		listaAtendimentoNormal = new ArrayList<>();
-		listaAtendimentoPreferencial = new ArrayList<>();
-
-	}
-
 	public Boolean buscarAtendimentos() {
 		try {
+			listaAtendimento = new ArrayList<>();
+			listaAtendimentoNormal = new ArrayList<>();
+			listaAtendimentoPreferencial = new ArrayList<>();
 			listaAtendimento = atendimentoRepository.findAll();
 			if (!listaAtendimento.isEmpty() || listaAtendimento != null) {
 				listaAtendimento.forEach(this::separarListaAtendimento);

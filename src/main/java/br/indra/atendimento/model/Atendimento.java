@@ -24,8 +24,9 @@ public class Atendimento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "senha")
-	private long senha;
+	@Column(name = "senha", unique = true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long senha;
 
 	@Column(name = "tipo_atendimento")
 	private Character tipoAtendimento;
@@ -65,11 +66,11 @@ public class Atendimento implements Serializable {
 		this.id = id;
 	}
 
-	public long getSenha() {
+	public Long getSenha() {
 		return senha;
 	}
 
-	public void setSenha(long senha) {
+	public void setSenha(Long senha) {
 		this.senha = senha;
 	}
 
