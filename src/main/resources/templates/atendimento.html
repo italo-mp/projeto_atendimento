@@ -4,6 +4,20 @@
 	layout:decorator="index">
 	<section layout:fragment="content">
 		<h2 class="header">Atendimento</h2>
+
+		<div class="row">
+			<form class="cols s12" style="margin-left: -56px;"
+				th:action="@{/atendimento}" method="get">
+				<div class="input-field col s4">
+					<i class="material-icons prefix"></i> <input id="icon_prefix"
+						name="nomeBusca" type="text"
+						placeholder="Qual cliente deseja buscar?" />
+				</div>
+				<div class="col s2" style="margin-top: 20px;">
+					<button type="submit" class="btn waves-effect waves-light">Buscar</button>
+				</div>
+			</form>
+		</div>
 		<div th:include="mensagem"></div>
 		<div class="col s12">
 			<div class="col s6">
@@ -21,8 +35,12 @@
 
 					</div>
 					<div class="card-action" th:if="${!#strings.isEmpty(cliente)}">
-						<a th:href="@{/atendimento/finalizar/{id} (id=${cliente.id})}">Finalizar</a><a
-							th:onclick="'javascript:buscarClienteEditar(\''+ ${cliente.pessoa.id} +'\')'">Dados do cliente</a>
+						<a th:href="@{/atendimento/finalizar/{id} (id=${cliente.id})}"
+							id="btnFinalizarNormal">Finalizar</a> <a href="#"
+							th:onclick="'javascript:atender(\''+ ${cliente.id} +'\')'"
+							id="btnAtenderNormal">Atender</a> <a href="#"
+							th:onclick="'javascript:buscarClienteEditar(\''+ ${cliente.pessoa.id} +'\')'">Dados
+							do cliente</a>
 					</div>
 				</div>
 
@@ -68,8 +86,12 @@
 					<div class="card-action"
 						th:if="${!#strings.isEmpty(clientePreferencial)}">
 						<a
-							th:href="@{/atendimento/finalizar/{id} (id=${clientePreferencial.id})}">Finalizar</a><a
-							th:onclick="'javascript:buscarClienteEditar(\''+ ${clientePreferencial.pessoa.id} +'\')'">Dados do cliente</a>
+							th:href="@{/atendimento/finalizar/{id} (id=${clientePreferencial.id})}"
+							id="btnFinalizarPref">Finalizar</a> <a href="#"
+							th:onclick="'javascript:atenderPreferencial(\''+ ${clientePreferencial.id} +'\')'"
+							id="btnAtenderPref">Atender</a> <a
+							th:onclick="'javascript:buscarClienteEditar(\''+ ${clientePreferencial.pessoa.id} +'\')'">Dados
+							do cliente</a>
 					</div>
 				</div>
 

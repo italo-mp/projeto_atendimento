@@ -1,14 +1,12 @@
 package br.indra.atendimento.controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,9 +36,8 @@ public class PessoaController {
 
 	@PostMapping
 	public String salvarClientes(@Valid Pessoa pessoa,
-			@RequestParam(value = "tipoAtendimento") Character tipoAtendimento, BindingResult br,
+			@RequestParam(value = "tipoAtendimento", required = false) Character tipoAtendimento, BindingResult br,
 			RedirectAttributes ra) {
-		System.out.println(tipoAtendimento);
 		if (pessoaService.salvarPessoa(pessoa, tipoAtendimento)) {
 			ra.addFlashAttribute("mensagemSucesso", "Cliente salvo com sucesso!");
 		} else {

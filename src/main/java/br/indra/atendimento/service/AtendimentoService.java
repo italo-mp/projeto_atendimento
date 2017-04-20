@@ -1,10 +1,8 @@
 package br.indra.atendimento.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,32 +19,23 @@ public class AtendimentoService {
 	private List<Atendimento> listaAtendimentoNormal;
 	private List<Atendimento> listaAtendimentoPreferencial;
 
-	public Boolean buscarAtendimentos() {
+	public Boolean buscarAtendimentos(String nomeBusca) {
 		try {
-			listaAtendimento = new ArrayList<>();
-			listaAtendimentoNormal = new ArrayList<>();
-			listaAtendimentoPreferencial = new ArrayList<>();
-			listaAtendimento = atendimentoRepository.buscarAtendimentosPendentes();
-			if (!listaAtendimento.isEmpty() || listaAtendimento != null) {
+			if (nomeBusca == null || nomeBusca.isEmpty()) {
+				listaAtendimento = atendimentoRepository.buscarAtendimentosPendentes();
+			} else {
+				listaAtendimento = atendimentoRepository.buscarNomeESenha(nomeBusca);
+			}
+			if (!listaAtendimento.isEmpty()) {
 				listaAtendimentoNormal = listaAtendimento.stream().filter(la -> la.getTipoAtendimento() == 'N')
-						.collect(Collectors.toList());
-				listaAtendimentoPreferencial = listaAtendimento.stream().filter(la -> la.getTipoAtendimento() != 'N')
-						.collect(Collectors.toList());
-				// listaAtendimento.forEach(this::separarListaAtendimento);
-				// listaAtendimento.forEach(a -> separarListaAtendimento(a));
+						.sorted((la, la2) -> la.getId().compareTo(la2.getId())).collect(Collectors.toList());
+				listaAtendimentoPreferencial = listaAtendimento.stream().filter(lp -> lp.getTipoAtendimento() != 'N')
+						.sorted((lp, lp2) -> lp.getId().compareTo(lp2.getId())).collect(Collectors.toList());
 			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		}
-	}
-
-	private void separarListaAtendimento(Atendimento atendimento) {
-		if (atendimento.getTipoAtendimento() == 'N') {
-			listaAtendimentoNormal.add(atendimento);
-		} else {
-			listaAtendimentoPreferencial.add(atendimento);
 		}
 	}
 
@@ -74,6 +63,16 @@ public class AtendimentoService {
 	public boolean excluirAtendimento(Long id) {
 		try {
 			atendimentoRepository.delete(id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public Boolean atenderCliente(Long id) {
+		try {
+			atendimentoRepository.atenderCliente('A', id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

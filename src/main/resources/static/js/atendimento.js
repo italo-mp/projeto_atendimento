@@ -1,6 +1,9 @@
-function teste() {
-	console.log('testeee');
-}
+$(document).ready(function() {
+	$('#btnFinalizarPref').hide();
+	$('#btnFinalizarNormal').hide();
+
+});
+
 
 function finalizarAtendimento(id) {
 	var url = window.location.pathname.toString();
@@ -12,10 +15,10 @@ function finalizarAtendimento(id) {
 
 function buscarClienteEditar(id) {
 	Materialize.updateTextFields();
-	var url = window.location.hostname.toString();
+	var url = window.location.pathname.toString();
 	$.ajax({
 		method : 'GET',
-		url : url + '/clientes/buscarParaEditar/' + id
+		url : url + '/buscarParaEditar/' + id
 	}).then(function(result) {
 		$('#clienteNome').val(result.nome);
 		$('#clienteId').val(result.id);
@@ -29,4 +32,26 @@ function buscarClienteEditar(id) {
 		$('#modalCliente').modal('open');
 	});
 
+}
+
+function atender(id) {
+	var url = window.location.pathname.toString();
+	$.ajax({
+		method : 'GET',
+		url : url + '/atender/' + id
+	}).then(function() {
+		$('#btnFinalizarNormal').show();
+		$('#btnAtenderNormal').hide();
+	});
+}
+
+function atenderPreferencial(id) {
+	var url = window.location.pathname.toString();
+	$.ajax({
+		method : 'GET',
+		url : url + '/atender/' + id
+	}).then(function() {
+		$('#btnFinalizarPref').show();
+		$('#btnAtenderPref').hide();
+	});
 }
