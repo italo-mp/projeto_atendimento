@@ -9,5 +9,4 @@ $(document).ready(function() {
 		window.location.replace('/login');
 	});
 	
-	$('#funcionarioCpf').mask('000.000.000-00', {reverse: true});
 });

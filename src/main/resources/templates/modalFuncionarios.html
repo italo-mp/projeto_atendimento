@@ -12,8 +12,8 @@
 							th:field="*{nome}" placeholder="Nome" required="required" /> <label>Nome</label>
 					</div>
 					<div class="input-field col s3">
-						<input type="text" class="validate" id="funcionarioCpf"
-							th:field="*{cpf}" placeholder="CPF" required="required" /> <label>CPF</label>
+						<input type="text" class="validate" id="funcionarioCpf" minlength="11" maxlength="11"
+							th:field="*{cpf}" placeholder="CPF" required="required"  /> <label>CPF</label>
 					</div>
 					<div class="input-field col s3">
 						<input type="text" class="validate" id="funcionarioRg"
