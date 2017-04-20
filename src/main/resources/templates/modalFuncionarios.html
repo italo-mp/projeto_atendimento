@@ -1,38 +1,50 @@
 <!-- Modal Structure -->
-<div id="modalFuncionarios" class="modal modal-fixed-footer">
+<div id="modalFuncionarios" class="modal">
 	<div class="modal-content">
 		<h4>Funcionários</h4>
-		<div class="row">
-			<form class="col s12">
+		<form class="col s12" id="formFuncionario" th:object="${funcionario}"
+			th:action="@{/funcionarios}" method="post">
+			<div class="row">
 				<div class="row">
+					<input type="hidden" th:field="*{id}" id="funcionarioId" />
 					<div class="input-field col s6">
-						<input id="icon_prefix" type="text" class="validate" /> <label>Nome
-						</label>
+						<input id="funcionarioNome" type="text" class="validate"
+							th:field="*{nome}" placeholder="Nome" required="required" /> <label>Nome</label>
 					</div>
 					<div class="input-field col s3">
-						<input type="text" class="validate" /> <label>CPF</label>
+						<input type="text" class="validate" id="funcionarioCpf"
+							th:field="*{cpf}" placeholder="CPF" required="required" /> <label>CPF</label>
 					</div>
 					<div class="input-field col s3">
-						<input type="text" class="validate" /> <label>Rg</label>
+						<input type="text" class="validate" id="funcionarioRg"
+							th:field="*{rg}" placeholder="RG" required="required" /> <label>RG</label>
 					</div>
 
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
-						<input type="text" class="validate" /> <label>E-mail</label>
+						<input type="text" class="validate" id="funcionarioEmail"
+							th:field="*{email}" placeholder="E-Mail" required="required" />
+						<label>E-mail</label>
 					</div>
 					<div class="input-field col s3">
-						<input type="text" class="validate" /> <label>Cargo</label>
+						<select th:field="*{cargo}" required="required">
+							<option value="">Selecione...</option>
+							<option th:each="c : ${listaCargos}" th:value="${c.id}"
+								th:text="${c.nome}"></option>
+						</select> <label>Cargo</label>
 					</div>
 					<div class="input-field col s3">
-						<input type="text" class="validate" /> <label>Senha</label>
+						<input type="password" class="validate" id="funcionarioSenha"
+							th:field="*{senha}" placeholder="Senha" /> <label>Senha</label>
 					</div>
 				</div>
-			</form>
-		</div>
-	</div>
-	<div class="modal-footer">
-		<a href="#!"
-			class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</a>
+			</div>
+			<div class="modal-footer">
+				<button class="modal-action waves-effect waves-green btn-flat"
+					id="botaoSalvarFuncionario">Salvar</button>
+			</div>
+
+		</form>
 	</div>
 </div>

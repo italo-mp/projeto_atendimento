@@ -24,7 +24,7 @@ public class PessoaService {
 		try {
 			pessoaRepository.save(pessoa);
 			if (tipoAtendimento != null) {
-				atendimentoRepository.save(new Atendimento(pessoa, 1L, 'P', tipoAtendimento));
+				atendimentoRepository.save(new Atendimento(pessoa, 1l, 'P', tipoAtendimento));
 			}
 			return true;
 		} catch (Exception e) {

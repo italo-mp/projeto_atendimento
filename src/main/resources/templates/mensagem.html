@@ -1,0 +1,7 @@
+<div class="card-panel teal lighten-2"
+	th:if="${!#strings.isEmpty(mensagemSucesso)}">
+	<span th:text="${mensagemSucesso}"></span>
+</div>
+<div class="card-panel red" th:if="${!#strings.isEmpty(mensagemErro)}">
+	<span th:text="${mensagemErro}"></span>
+</div>

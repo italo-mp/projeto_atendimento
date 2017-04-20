@@ -2,17 +2,44 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="index">
-
 	<section layout:fragment="content">
-		<div class="row">
-			<h2 class="header">Atendimento</h2>
-			<div class="row">
-				<div class="carousel">
-					<div th:each="atendimento : ${listaAtendimentos}">
-				    <div class="carousel-item" href="#one!"><a th:text="${atendimento.senha}"></a><a th:text="${atendimento.tipoAtendimento}"></a></div>
-				    </div>
-  				</div>
+		<div class="col s12">
+			<div class="carousel col s6">
+
+				<p>
+				<h4 class="fonte-verde">Normal</h4>
+				</p>
+				<div class="card blue-grey darken-1 carousel-item" th:each="normal : ${listaAtendimentoNormal}">
+					<div class="card-content white-text">
+						<span class="card-title" th:text="${normal.pessoa.nome}"></span>
+						<p>
+						<h3 th:text="${normal.senha}"></h3>
+						</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Finalizar</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="carousel col s6">
+				<p>
+				<h4 class="fonte-verde">Preferencial</h4>
+				</p>
+				<div class="card blue-grey darken-1 carousel-item" th:each="pref : ${listaAtendimentoPreferencial}">
+					<div class="card-content white-text">
+						<span class="card-title" th:text="${pref.pessoa.nome}"></span>
+						<p>
+						<h3 th:text="${pref.senha}"></h3>
+						</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Finalizar</a>
+					</div>
+				</div>
+
 			</div>
 		</div>
+
 	</section>
 </div>

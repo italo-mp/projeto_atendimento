@@ -1,65 +1,64 @@
 
 <!-- Modal Structure -->
-<div id="modalCliente" class="modal modal-fixed-footer">
+<div id="modalCliente" class="modal">
 	<div class="modal-content">
 		<form class="col s12" th:object="${pessoa}" th:action="@{/clientes}"
 			id="formCliente" method="post">
 			<h4>Clientes</h4>
 			<div class="row">
 				<input type="hidden" th:field="*{id}" id="clienteId" />
-				<div class="input-field col s6">
+				<div class="input-field col s4">
 					<input id="clienteNome" type="text" class="validate"
-						th:field="*{nome}" placeholder="Nome" /> <label>Nome</label>
+						th:field="*{nome}" placeholder="Nome" required="required" /> <label>Nome</label>
 				</div>
 				<div class="input-field col s3">
 					<input type="text" class="validate" placeholder="CPF"
-						th:field="*{cpf}" id="clienteCpf" /> <label>CPF</label>
+						th:field="*{cpf}" id="clienteCpf" required="required" /> <label>CPF</label>
 				</div>
 				<div class="input-field col s3">
 					<input type="text" class="validate" placeholder="RG"
 						th:field="*{rg}" id="clienteRg" /> <label>RG</label>
 				</div>
-
+				<div class="input-field col s2">
+					<input type="text" class="validate" placeholder="CEP"
+						th:field="*{cep}" id="clienteCep" required="required" /> <label>CEP</label>
+				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s3">
-					<input type="text" class="validate" placeholder="CEP"
-						th:field="*{cep}" id="clienteCep" /> <label>CEP</label>
-				</div>
 				<div class="input-field col s3">
 					<input type="text" class="validate" placeholder="Estado"
-						th:field="*{estado}" id="clienteEstado" /> <label>Estado</label>
+						th:field="*{estado}" id="clienteEstado" required="required" /> <label>Estado</label>
 				</div>
-				<div class="input-field col s6">
-					<input type="text" class="validate" placeholder="Endereço"
-						th:field="*{endereco}" id="clienteEndereco" /> <label>Endereço</label>
+				<div class="input-field col s4">
+					<input type="text" class="validate" placeholder="EndereÃ§o"
+						th:field="*{endereco}" id="clienteEndereco" required="required" />
+					<label>EndereÃ§o</label>
 				</div>
-
-			</div>
-			<div class="row">
 				<div class="input-field col s3">
 					<input type="text" class="validate" placeholder="Bairro"
-						th:field="*{bairro}" id="clienteBairro" /> <label>Bairro</label>
+						th:field="*{bairro}" id="clienteBairro" required="required" /> <label>Bairro</label>
 				</div>
-				<div class="input-field col s3">
+				<div class="input-field col s2">
 					<input type="text" class="validate" placeholder="Cidade"
-						th:field="*{cidade}" id="clienteCidade" /> <label>Cidade</label>
+						th:field="*{cidade}" id="clienteCidade" required="required" /> <label>Cidade</label>
 				</div>
-				<div class="col s6">
-					Gerar senha para atendimento?
+			</div>
+			<div class="row">
+				<div class="col s12">
 					<p>
-						<input type="radio" class="filled-in" name="tipoAtendimento"
-							value="N" id="normal" /> <label for="normal">Atendimento
-							normal!</label> <input type="radio" class="filled-in"
-							name="tipoAtendimento" id="preferencial" value="P" /> <label
-							for="preferencial">Atendimento preferencial!</label>
+						Gerar senha para atendimento? <input type="radio"
+							class="filled-in" name="tipoAtendimento" value="N" id="normal" />
+						<label for="normal">Atendimento normal!</label> <input
+							type="radio" class="filled-in" name="tipoAtendimento"
+							id="preferencial" value="P" /> <label for="preferencial">Atendimento
+							preferencial!</label>
 					</p>
 				</div>
 			</div>
+			<div class="modal-footer">
+				<button type="submit"
+					class="modal-action waves-effect waves-green btn-flat">Salvar</button>
+			</div>
 		</form>
-	</div>
-	<div class="modal-footer">
-		<button type="submit"
-			class="modal-action waves-effect waves-green btn-flat">Salvar</button>
 	</div>
 </div>

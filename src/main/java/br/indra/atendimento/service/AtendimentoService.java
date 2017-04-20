@@ -1,5 +1,6 @@
 package br.indra.atendimento.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,40 +11,49 @@ import br.indra.atendimento.repository.AtendimentoRepository;
 
 @Service
 public class AtendimentoService {
-	
+
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
-	
-	public Boolean salvarAtendimento(Atendimento atendimento) {
-		
+	private List<Atendimento> listaAtendimento;
+	private List<Atendimento> listaAtendimentoNormal;
+	private List<Atendimento> listaAtendimentoPreferencial;
+
+	public AtendimentoService() {
+		listaAtendimento = new ArrayList<>();
+		listaAtendimentoNormal = new ArrayList<>();
+		listaAtendimentoPreferencial = new ArrayList<>();
+
+	}
+
+	public Boolean buscarAtendimentos() {
 		try {
-			atendimentoRepository.save(atendimento);
+			listaAtendimento = atendimentoRepository.findAll();
+			listaAtendimento.forEach(this::separarListaAtendimento);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
-	
-	public Boolean excluirAtendimento(Long id) {
-		
-		try {
-			atendimentoRepository.delete(id);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+
+	private void separarListaAtendimento(Atendimento atendimento) {
+		if (atendimento.getTipoAtendimento() == 'N') {
+			listaAtendimentoNormal.add(atendimento);
+		} else {
+			listaAtendimentoPreferencial.add(atendimento);
 		}
-		
 	}
-	
-	public List<Atendimento> buscarAtendimentoPorNome(String nome) {
-		return null;
+
+	public List<Atendimento> getListaAtendimento() {
+		return listaAtendimento;
 	}
-	
-	public List<Atendimento> buscarAtendimentos() {
-		return atendimentoRepository.findAll();
+
+	public List<Atendimento> getListaAtendimentoNormal() {
+		return listaAtendimentoNormal;
+	}
+
+	public List<Atendimento> getListaAtendimentoPreferencial() {
+		return listaAtendimentoPreferencial;
 	}
 
 }

@@ -7,10 +7,7 @@
 		<div class="row">
 			<h2 class="header">Clientes</h2>
 			<div class="row">
-				<div class="card-panel teal lighten-2" th:if="${mensagemSucesso}"
-					th:text="${mensagemSucesso}"></div>
-				<div class="card-panel teal red" th:if="${mensagemErro}"
-					th:text="${mensagemErro}"></div>
+				<div th:include="mensagem"></div>
 
 				<form class="cols s12" style="margin-left: -56px;"
 					th:action="@{/clientes}" method="get">
@@ -58,7 +55,8 @@
 							th:href="@{clientes/excluir/{id} (id=${pessoa.id})}"><i
 								class="material-icons">delete</i></a> <a class="alterar" href="#"
 							th:onclick="'javascript:buscarClienteEditar(\''+ ${pessoa.id} +'\')'"><i
-								class="material-icons">mode_edit</i></a> <a><i
+								class="material-icons">mode_edit</i></a> 
+								<a th:href="@{clientes/gerarSenha/{id} (id=${pessoa.id})}"><i
 								class="material-icons">note_add</i></a></td>
 					</tr>
 

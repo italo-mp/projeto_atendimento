@@ -1,13 +1,37 @@
 .side-nav.fixed {
-    margin-top: 71px;
-    margin-left: 7px;
+	margin-top: 71px;
+	margin-left: 7px;
 }
 
 .side-nav .userView {
-    position: inherit;
-    margin-bottom: 13px;
+	position: inherit;
+	margin-bottom: 13px;
 }
 
 .side-nav .userView .background {
-top: -54px;
+	top: -54px;
+}
+
+#modalCliente {
+	width: 75% !important;
+}
+
+.excluir {
+	color: #f44336;
+}
+
+.alterar {
+	color: #1de9b6;
+}
+
+.modal.modal-fixed-footer .modal-content {
+	position: absolute;
+	height: calc(100% - 22px);
+	max-height: 100%;
+	width: 100%;
+	overflow-y: auto;
+}
+
+.fonte-verde {
+	color: #00e676;
 }

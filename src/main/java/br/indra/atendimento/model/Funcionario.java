@@ -16,6 +16,7 @@ import javax.persistence.Table;
 public class Funcionario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,7 +38,7 @@ public class Funcionario implements Serializable {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "cargo_id")
-	private Cargo cargoId;
+	private Cargo cargo;
 
 	public Long getId() {
 		return id;
@@ -87,12 +88,12 @@ public class Funcionario implements Serializable {
 		this.email = email;
 	}
 
-	public Cargo getCargoId() {
-		return cargoId;
+	public Cargo getCargo() {
+		return cargo;
 	}
 
-	public void setCargoId(Cargo cargoId) {
-		this.cargoId = cargoId;
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
 	}
 
 }

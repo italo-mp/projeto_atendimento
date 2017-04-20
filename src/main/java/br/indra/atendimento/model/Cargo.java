@@ -18,6 +18,8 @@ public class Cargo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column
 	private String nome;
 
 	public Long getId() {
@@ -35,11 +37,5 @@ public class Cargo implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
 
 }
