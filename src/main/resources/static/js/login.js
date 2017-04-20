@@ -12,6 +12,7 @@ $(document).ready(function() {
 			if(result.nome == sessionStorage.login &&
 			   result.senha == sessionStorage.passw){
 				window.location.replace('/clientes');
+				console.log("passou");
 			}
 		});
 		
