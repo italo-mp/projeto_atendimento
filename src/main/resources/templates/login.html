@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<meta charset="UTF-8" />
+<title>Login</title>
+<link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link
+	th:href="@{http://fonts.googleapis.com/icon?family=Material+Icons}"
+	rel="stylesheet" />
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+</head>
+
+<body class="green accent-2">
+
+	<div class="row">
+		<div id="login-div" class="col s12 m5">
+			<div id="login-div-inner" class="card-panel">
+				<span>
+					<h2 class="green-text text-accent-2">Login</h2>
+					<div class="row">
+						<form class="col s12">
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="login" type="text" class="validate"></input> <label
+										for="login">Login</label>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="input-field col s12">
+									<input id="password" type="password" class="validate"></input> <label
+										for="password">Senha</label>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					<div class="row">
+						<div class="col s12">
+							<a id="enter" class="waves-effect waves-light btn">enter</a>
+						</div>
+					</div>
+				</span>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

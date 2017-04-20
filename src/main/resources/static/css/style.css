@@ -35,3 +35,16 @@
 .fonte-verde {
 	color: #00e676;
 }
+
+
+
+#login-div{
+	width:100%;
+	text-align: center;
+}
+
+#login-div-inner{
+	width:40%;
+	margin: auto;
+	margin-top: 7%;
+}
